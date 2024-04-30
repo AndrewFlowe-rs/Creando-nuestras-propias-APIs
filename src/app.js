@@ -10,9 +10,9 @@ const moviesRoutes = require('./routes/moviesRoutes');
 const genresRoutes = require('./routes/genresRoutes');
 
 //Aquí pueden colocar las rutas de las APIs
-const indexRouterApi = require('./routes/');
-const moviesRoutesApi = require('./routes/');
-const genresRoutesApi = require('./routes/');
+// const indexRouterApi = require('./routes/api/indexRoutes.api');
+// const moviesRoutesApi = require('./routes/api/moviesRoutes.api');
+const genresRoutesApi = require('./routes/api/genresRoutes.api');
 
 
 // view engine setup
@@ -33,7 +33,9 @@ app.use(genresRoutes);
 
 
 //APIS
-
+app.use('/', indexRouterApi);
+app.use(moviesRoutesApi);
+app.use(genresRoutesApi);
 
 
 //Activando el servidor desde express
