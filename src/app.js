@@ -31,7 +31,7 @@ app.use('/', indexRouter);
 app.use(moviesRoutes);
 app.use(genresRoutes);
 
-app.use("/api" , GenresRouterApi);
+app.use( GenresRouterApi);
 app.use(MoviesRouterApi);
 app.use(ActorsRouterApi)
 
