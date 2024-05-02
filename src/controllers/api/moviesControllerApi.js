@@ -2,8 +2,28 @@ const { where } = require('sequelize');
 const db = require('../../database/models')
 
 module.exports = {
+    listA : (req ,res ) => {
+        db.Movie.findAll()
+        .then(movies=> {
+            res.status(200).json({
+                meta: {
+                    status:200,
+                    total:movies.length,
+                    url:'api/movies'
+                },
+                data: movies
+            })
+        })
+        .catch(err =>{
+            res.status(500).json({
+                ok: false,
+                msg: err.message
+            })
+        })
+    },
+    
 
-    create: (req, res) => {
+    createA: (req, res) => {
         const { title, rating, awards, release_date, length, genre_id } = req.body;
 
         db.Movie.create({
@@ -31,7 +51,7 @@ module.exports = {
                 })
             })
     },
-    destroy: (req, res) => {
+    destroyApi: (req, res) => {
         const { id } = req.params;
 
         db.Movie.destroy({
